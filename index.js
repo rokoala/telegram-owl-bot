@@ -1,4 +1,8 @@
+const winston = require('winston');
 const TelegramBot = require('node-telegram-bot-api');
+
+winston.add(winston.transports.File, {filename:'bot.log'})
+winston.remove(winston.transports.Console);
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = require('./env.json').API_TOKEN;
@@ -11,7 +15,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   // 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
-
+  winston.log('info',msg);
   const chatId = msg.chat.id;
   const resp = match[1]; // the captured "whatever"
 
@@ -27,3 +31,5 @@ bot.on('message', (msg) => {
   // send a message to the chat acknowledging receipt of their message
   bot.sendMessage(chatId, 'Received your message');
 });
+
+winston.info('Bot started')

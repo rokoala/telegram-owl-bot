@@ -23,6 +23,20 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   bot.sendMessage(chatId, resp);
 });
 
+bot.onText('/\/getrandomquestion (.+)/', (msg, match) =>{
+  bot.sendMessage(msg.chat.id, "O que é o que é caí em pé e corre deitado ?")
+  bot.sendMessage(msg.chat.id, "A. Cadeira\n B. Chuva \n C. Fogo \n D. Vento", {
+    "reply_markup":{
+      "keyboard":[["a","b","c","d"]]
+    }
+  });
+
+  bot.onText(/.+/g, function(msg, match) {
+    bot.sendMessage(msg.chat.id, "You selected " + match);
+    winston.log(msg)
+  });
+})
+
 // Listen for any kind of message. There are different kinds of
 // messages.
 bot.on('message', (msg) => {

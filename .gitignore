@@ -1,3 +1,6 @@
+# configuration file - telegram token api
+env.json
+
 # Logs
 logs
 *.log

@@ -1,0 +1,27 @@
+{
+  "name": "telegram-owl-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot that send private questions to improve self study about some topics",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rokoala/telegram-owl-bot.git"
+  },
+  "keywords": [
+    "telegram",
+    "bot"
+  ],
+  "author": "Rodrigo Koga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rokoala/telegram-owl-bot/issues"
+  },
+  "homepage": "https://github.com/rokoala/telegram-owl-bot#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.27.1"
+  }
+}

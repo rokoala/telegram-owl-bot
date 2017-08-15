@@ -30,22 +30,10 @@ bot.onText(/\/getrandomquestion/, (msg, match) =>{
       "keyboard":[["a","b"],["c","d"]]
     }
   });
+})
 
-  bot.onText(/.+/g, function(msg, match) {
-    bot.sendMessage(msg.chat.id, "You selected " + match);
-    winston.log('info', msg);
-
-    var answer = (match === 'b') ? "Você acertou" : "Errouu~"
-    bot.sendMessage({
-      chat_id: message.chat.id,
-      text: answer,
-      reply_markup: JSON.stringify({
-        hide_keyboard: true
-      })
-    });
-    
-  });
-  
+bot.on("callback_query", (callbackQuery)=>{
+  winston.log('info',callbackQuery);
 })
 
 // Listen for any kind of message. There are different kinds of

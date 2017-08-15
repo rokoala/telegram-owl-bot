@@ -13,20 +13,46 @@ const bot = new TelegramBot(token, {
   polling: true
 });
 
+
+var questions = [{
+  text: "O que é o que é caí em pé e corre deitado?\nA. Cadeira\nB. Chuva\n C.Fogo \n D.Vento",
+  answer: "b"
+}]
+
+var answerCallbacks = {};
+
 bot.onText(/\/getrandomquestion/, (msg, match) => {
-  bot.sendMessage(msg.chat.id, "O que é o que é caí em pé e corre deitado?\nA. Cadeira\nB. Chuva\n C.Fogo \n D.Vento", {
+
+  var question = questions[0]
+
+  answerCallbacks[msg.chat.id] = (answer) => {
+    if (answer === question.answer) {
+      console.log('correct!')
+      bot.sendMessage('Correct!')
+    } else {
+      console.log('error')
+      bot.sendMessage('Error!')
+    }
+  }
+
+  bot.sendMessage(msg.chat.id, question.text, {
     "reply_markup": {
       "keyboard": [
         ["a", "b"],
         ["c", "d"]
       ]
-    }
-  }).then((msg)=>{
-    bot.onReplyToMessage(msg.chat.id, msg.message_id, (obj)=>{
-      console.log(obj);
-      console.log("replied");
-    });
+    },
+    "one_time_keyboard": true
   })
+
+})
+
+bot.on("message", (msg) => {
+  var cb = answerCallbacks[msg.chat.id];
+  if (cb) {
+    delete answerCallbacks[msg.chat.id];
+    return cb(msg);
+  }
 })
 
 winston.info('Bot started')

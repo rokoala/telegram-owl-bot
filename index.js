@@ -25,13 +25,13 @@ bot.onText(/\/getrandomquestion/, (msg, match) => {
 
   var question = questions[0]
 
-  answerCallbacks[msg.chat.id] = (answer) => {
+  answerCallbacks[msg.chat.id] = (msg, answer) => {
     if (answer === question.answer) {
       console.log('correct!')
-      bot.sendMessage('Correct!')
+      bot.sendMessage(msg.chat.id, 'Correct!')
     } else {
       console.log('error')
-      bot.sendMessage('Error!')
+      bot.sendMessage(msg.chat.id, 'Error!')
     }
   }
 

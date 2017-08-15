@@ -26,7 +26,7 @@ bot.onText(/\/getrandomquestion/, (msg, match) => {
   var question = questions[0]
 
   answerCallbacks[msg.chat.id] = (answer) => {
-    if (answer.chat.text === question.answer) {
+    if (answer.text === question.answer) {
       console.log('correct!')
       bot.sendMessage(answer.chat.id, 'acertou!')
     } else {

@@ -37,13 +37,19 @@ bot.onText(/\/getrandomquestion/, (msg, match) => {
 
   bot.sendMessage(msg.chat.id, question.text, {
     "reply_markup": {
-      "ReplyKeyboardMarkup": {
-        "keyboard":[
-          [{text:"a"}, {text:"b"}],
-          [{text:"c"}, {text:"d"}]
-        ],
-        "one_time_keyboard":true
-      }
+      "keyboard": [
+        [{
+          text: "a"
+        }, {
+          text: "b"
+        }],
+        [{
+          text: "c"
+        }, {
+          text: "d"
+        }]
+      ],
+      "one_time_keyboard": true
     }
   })
 

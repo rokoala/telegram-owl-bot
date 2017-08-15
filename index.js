@@ -21,9 +21,11 @@ bot.onText(/\/getrandomquestion/, (msg, match) => {
         ["c", "d"]
       ]
     }
-  }).then((obj)=>{
-    console.log(obj);
-    // bot.onReplyToMessage(chatId, messageId, callback)
+  }).then((msg)=>{
+    bot.onReplyToMessage(msg.chat.id, msg.message_id, (obj)=>{
+      console.log(obj);
+      console.log("replied");
+    });
   })
 })
 

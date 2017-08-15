@@ -39,13 +39,12 @@ bot.onText(/\/getrandomquestion/, (msg, match) => {
     "reply_markup": {
       "ReplyKeyboardMarkup": {
         "keyboard":[
-          ["a", "b"],
-          ["c", "d"]
+          [{text:"a"}, {text:"b"}],
+          [{text:"c"}, {text:"d"}]
         ],
         "one_time_keyboard":true
       }
-    },
-    "one_time_keyboard": true
+    }
   })
 
 })
